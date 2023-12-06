@@ -5,6 +5,10 @@ const { MongoClient } = require('mongodb');
 const url = 'mongodb+srv://lokeshsaimpu:loki1234@nodejs.hlcxj7f.mongodb.net/?retryWrites=true&w=majority';
 
 const server = http.createServer(async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    
     if (req.url === '/') {
         fs.readFile(path.join(__dirname, 'public', 'index.html'), (err, content) => {
             if (err) {
